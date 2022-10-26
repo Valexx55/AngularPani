@@ -1,1 +1,20 @@
-<p>alumnos works!</p>
+<div class="listaAlumnos">
+    <div *ngFor="let alumno of lista_alumnos" class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <h5 class="card-title"> {{alumno.id}} {{alumno.nombre}} {{alumno.apellido}}</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Email: {{alumno.email}}</li>
+                <li class="list-group-item">Edad: {{alumno.edad}}</li>
+            </ul>
+            <div class="card-footer text-muted">
+                <p>{{alumno.creadoEn}}</p>
+            </div>
+            <button title="botonborrar" class="btn btn-danger" (click)="borrarAlumno(alumno.id)">ELIMINAR </button>
+            <button title="botoneditar" class="btn btn-success" (click)="editarAlumno(alumno)">EDITAR </button>
+
+        </div>
+
+    </div>
+
+</div>

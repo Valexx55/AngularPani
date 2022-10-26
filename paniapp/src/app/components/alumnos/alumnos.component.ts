@@ -32,14 +32,22 @@ export class AlumnosComponent implements OnInit {
         console.error("Error" + error.error);
         console.error("Error" + error.ok);
       },
-      complete:() => {
+      complete: () => {
         console.log("Complete");
       }
     });
+
+    
   }
 
-  //TODO plantear la solución para que en este componente se obtengan y representen
-  //los alumnos de esta url
-  //https://my-json-server.typicode.com/valexx55/alumnostardes/alumno
+  borrarAlumno(id_alumno:number)
+  {
+    console.log("TOCADO borrarAlumno ALUMNO");
+  }
+
+  editarAlumno(alumno_editar:Alumno)
+  {
+    console.log("TOCADO editarAlumno ALUMNO");
+  }
 
 }

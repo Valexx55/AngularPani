@@ -1,0 +1,10 @@
+.listaAlumnos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;/*le decimos al contenedor cómo tiene que distribuir los subelementos de primer nivel*/
+}
+
+.card{
+    margin: 1rem;
+    width: 18rem;
+}
