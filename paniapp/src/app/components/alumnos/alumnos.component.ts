@@ -50,4 +50,31 @@ export class AlumnosComponent implements OnInit {
     console.log("TOCADO editarAlumno ALUMNO");
   }
 
+  ordenarPorEdad()
+  {
+    console.log("ordenarPorEdad()");
+    this.lista_alumnos.sort( //si edad de alumno1 es mayor, devuelvo positivo. si es menor, negativo y son iguales, 0
+      (alumno1:Alumno, alumno2:Alumno) => {
+       /* let resultado:number=0;
+       if (alumno1.edad>alumno2.edad) 
+       {
+        resultado = 1;
+       }
+        
+      else if (alumno1.edad<alumno2.edad) 
+      {
+        resultado = -1;
+      }
+        
+        else 
+        {
+          resultado = 0;//son iguales
+        }
+       return resultado;*/
+        //return alumno1.edad-alumno2.edad;
+        return alumno2.edad-alumno1.edad;  
+      }
+    );
+  }
+
 }
