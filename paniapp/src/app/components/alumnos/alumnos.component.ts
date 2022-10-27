@@ -43,6 +43,25 @@ export class AlumnosComponent implements OnInit {
   borrarAlumno(id_alumno:number)
   {
     console.log("TOCADO borrarAlumno ALUMNO");
+    this.servicioAlumnos.deleteAlumno(id_alumno).subscribe(
+      {
+        next:(datos) => {
+          //objeto.alumnos = datos;
+          //console.log(datos);
+          //de la lista de alumnos, tengo que filtrar/eliminar al que tenga el id del borrado
+          this.lista_alumnos = this.lista_alumnos.filter(alumno => {return alumno.id != id_alumno} );
+        },
+        error:(error: HttpErrorResponse) => {
+          console.error("Error" + error.name);
+          console.error("Error" + error.message);
+          console.error("Error" + error.error);
+          console.error("Error" + error.ok);
+        },
+        complete: () => {
+          console.log("Complete");
+        }
+      }
+    )
   }
 
   editarAlumno(alumno_editar:Alumno)

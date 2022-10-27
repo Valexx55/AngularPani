@@ -1,0 +1,48 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "alumnos": [
+    {
+      "id": 15,
+      "nombre": "RASFSDF",
+      "apellido": "ADFADSF",
+      "email": "jses@es",
+      "edad": 6,
+      "creadoEn": "2022-02-16T20:54:13.445+00:00",
+      "fotoHashCode": null
+    },
+    {
+      "id": 16,
+      "nombre": "RASFSDF",
+      "apellido": "ADFADSF",
+      "email": "jses@es",
+      "edad": 6,
+      "creadoEn": "2022-02-16T20:55:58.789+00:00",
+      "fotoHashCode": null
+    },
+    {
+      "id": 17,
+      "nombre": "RVALERIANO",
+      "apellido": "MORENO",
+      "email": "valerianomoreno@gmail.com",
+      "edad": 38,
+      "creadoEn": "2022-02-16T20:56:26.104+00:00",
+      "fotoHashCode": null
+    }
+  ]
+}
