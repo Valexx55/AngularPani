@@ -1,4 +1,4 @@
-<button title="botonborrar" class="btn btn-primary" (click)="ordenarPorEdad()">ORDENAR </button>
+<button title="crearAlumno" class="btn btn-primary" routerLink="/alumnos/form">CREAR</button>
 <div class="listaAlumnos">
     <div *ngFor="let alumno of lista_alumnos" class="card" style="width: 18rem;">
         <img *ngIf="alumno.id%2==0" class="card-img-top" alt="Foto Alumno" src="https://randomuser.me/api/portraits/women/{{alumno.id}}.jpg">
@@ -17,4 +17,5 @@
             <button title="botoneditar" class="btn btn-success" (click)="editarAlumno(alumno)">EDITAR </button>
         </div>
     </div>
+    <button title="botonborrar" class="btn btn-primary" (click)="ordenarPorEdad()">ORDENAR </button>
 </div>

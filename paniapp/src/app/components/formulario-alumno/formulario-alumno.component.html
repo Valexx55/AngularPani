@@ -1,0 +1,41 @@
+<!--FORMULARIO DE PLANTILLA TEMPLATE FORM-->
+<form #formulario_alumno="ngForm" (ngSubmit)="crearAlumno()" >
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" #nombre="ngModel" [(ngModel)]="alumno.nombre" class="form-control" name="nombre" id="nombre"  placeholder="Intro nombre" required pattern=".{4,15}">
+        <!--aquí va a ir nuestro mensaje de error
+        esta formula evita la validación "brasas"-->
+        <!-- <div class="alert alert-danger"  [hidden]="!formulario_alumno.submitted || nombre.valid"></div> -->
+        <div class="alert alert-danger"  [hidden]="nombre.pristine||nombre.valid||nombre.value==''">
+            Nombre entre 4 y 15 letras
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" #apellido="ngModel" [(ngModel)]="alumno.apellido" class="form-control" name="apellido" id="apellido"  placeholder="Intro apellido" required>
+        <div class="alert alert-danger" [hidden]="apellido.pristine||apellido.valid">
+            Apellido obligatorio
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="edad">Edad</label>
+        <input type="number" #edad="ngModel" [(ngModel)]="alumno.edad" class="form-control" name="edad" id="edad"  placeholder="Intro edad" required min="1" max="130">
+        <div class="alert alert-danger" [hidden]="edad.pristine||edad.valid">
+            Intro edad entre 1 y 130
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" #email="ngModel" [(ngModel)]="alumno.email" class="form-control" name="email" id="email"  placeholder="Intro correo" required email>
+        <div class="alert alert-danger" [hidden]="email.pristine||email.valid">
+            Intro un email correcto
+        </div>
+    </div>
+    <br>
+    <!--si el formulario no es valido, el boton, tiene que estar deshabilitado-->
+    <!--si el formulario no es valido, el boton, tiene que estar deshabilitado
+        [disabled]="!formulario_alumno.valid"
+       
+    -->
+    <button type="submit" [disabled]="!formulario_alumno.valid" [class]="estiloBoton()">{{ (en_edicion) ? 'ACTUALIZAR': 'CREAR'}} </button>
+</form>
