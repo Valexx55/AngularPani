@@ -8,6 +8,7 @@ import { AlumnosComponent } from './components/alumnos/alumnos.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormularioAlumnoComponent } from './components/formulario-alumno/formulario-alumno.component';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     LayoutModule, //cargo el módulo personalizado, para que pueda usarse todo lo que lleva en el
     HttpClientModule,
-    FormsModule//necesario para poder trabjar con Formularios Plantilla!
+    FormsModule,//necesario para poder trabjar con Formularios Plantilla!
+    FontAwesomeModule//FUENTES ICONOGRÁFICOS
   ],
   providers: [],
   bootstrap: [AppComponent]

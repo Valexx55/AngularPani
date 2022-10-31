@@ -1,6 +1,7 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observer } from 'rxjs';
 import { CLAVE_ALUMNO_EDICION } from 'src/app/config/constantes';
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnosService } from 'src/app/services/alumnos.service';
@@ -16,9 +17,35 @@ export class FormularioAlumnoComponent implements OnInit {
   alumno:Alumno;
   en_edicion:boolean; //como voy reutilar este componente tanto para la creación como para modificación, uso esta variable de control, para saber qué "uso" estoy
 
+  observador:Observer<HttpResponse<Alumno>>;
+
   constructor(private alumnoServices:AlumnosService, private router:Router) { 
     this.alumno = new Alumno();
     this.en_edicion=false;
+    this.observador =  {
+      next:(mensaje_respuesta:HttpResponse<Alumno>) => {
+        //objeto.alumnos = datos;
+        
+        console.log(mensaje_respuesta);
+        let alumnorx : Alumno = mensaje_respuesta.body as Alumno;
+        this.mostrarCabeceras(mensaje_respuesta); //mostramos las cabeceras
+        if (mensaje_respuesta.status==201||mensaje_respuesta.status==200)
+        {
+          console.log("Alumno ACTUALIZADO correctamente");
+          alert("Alumno ACTUALIZADO correctamente");
+          this.router.navigateByUrl("/alumnos");
+        }
+      },
+      error:(error: HttpErrorResponse) => {
+        console.error("Error" + error.name);
+        console.error("Error" + error.message);
+        console.error("Error" + error.error);
+        console.error("Error" + error.ok);
+      },
+      complete: () => {
+        console.log("Complete");
+      }
+    };
   }
 
   ngOnInit(): void {
@@ -34,7 +61,10 @@ export class FormularioAlumnoComponent implements OnInit {
       console.log("ESTAMOS EDITANDO");
       //VOY A CARGAR EL ALUMNO QUE ESTOY EDITANDO
       //TODO:, leer el alumno de la memoria / desrializar
-      this.alumno = this.obtenerAlumnoEnEdicion ();
+       
+      //this.alumno = this.obtenerAlumnoEnEdicion (); //obtengo el alumno del Local Storage
+      this.alumno = this.alumnoServices.getAlumnoEdicion(); //obtengo el alumno del Servicio
+
     } else {
       //venimos a crear
       console.log("ESTAMOS CREANDO");
@@ -105,33 +135,7 @@ export class FormularioAlumnoComponent implements OnInit {
         }
       }
     );*/
-
-    this.alumnoServices.postAlumnoConCabeceras(this.alumno).subscribe(
-      {
-        next:(mensaje_respuesta:HttpResponse<Alumno>) => {
-          //objeto.alumnos = datos;
-          
-          console.log(mensaje_respuesta);
-          let alumnorx : Alumno = mensaje_respuesta.body as Alumno;
-          this.mostrarCabeceras(mensaje_respuesta); //mostramos las cabeceras
-          if (mensaje_respuesta.status==201)
-          {
-            console.log("Alumno Insertado correctamente");
-            alert("Alumno Insertado correctamente");
-            this.router.navigateByUrl("/alumnos");
-          }
-        },
-        error:(error: HttpErrorResponse) => {
-          console.error("Error" + error.name);
-          console.error("Error" + error.message);
-          console.error("Error" + error.error);
-          console.error("Error" + error.ok);
-        },
-        complete: () => {
-          console.log("Complete");
-        }
-      }
-    );
+    this.alumnoServices.postAlumnoConCabeceras(this.alumno).subscribe(this.observador);
 
   }
 
@@ -147,6 +151,15 @@ export class FormularioAlumnoComponent implements OnInit {
     }
 
     return estilo_dev;
+  }
+
+  modificarAlumno ()
+  {
+    console.log(" modificarAlumno ()");
+
+    this.alumnoServices.putAlumno(this.alumno.id, this.alumno).subscribe(this.observador);
+
+
   }
 
 }

@@ -11,6 +11,21 @@ export class AlumnosService {
 
   cabeceras : HttpHeaders = new HttpHeaders({'Content-type':'application/json'});
 
+  alumnoEdicion: Alumno;//ALAMACEN TEMPORAL
+
+
+  //este método lo invocamos desde el listado
+  setAlumnoEdicion (alumno:Alumno):void
+  {
+    this.alumnoEdicion = alumno;
+  }
+
+  //y este lo invocamos desde el formulario (cuando estemos en edición)
+  getAlumnoEdicion ():Alumno
+  {
+    return this.alumnoEdicion;
+  }
+
   //static readonly URL_ALUMNOS:string = "https://my-json-server.typicode.com/valexx55/alumnostardes/alumno";
 
   static readonly URL_ALUMNOS:string = "http://localhost:3000/alumnos";
@@ -46,5 +61,10 @@ export class AlumnosService {
   deleteAlumno (id:number) : Observable<any>
   {
     return this.clienteHttp.delete<any>(AlumnosService.URL_ALUMNOS+"/"+id);
+  }
+
+  putAlumno (id:number, alumno:Alumno):Observable<HttpResponse<Alumno>>
+  {
+    return this.clienteHttp.put<Alumno>(AlumnosService.URL_ALUMNOS+"/"+id, alumno, {headers:this.cabeceras,  observe: 'response'});
   }
 }

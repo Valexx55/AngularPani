@@ -19,8 +19,8 @@
   "alumnos": [
     {
       "id": 15,
-      "nombre": "RASFSDF",
-      "apellido": "ADFADSF",
+      "nombre": "super RAFITA",
+      "apellido": "NADAL",
       "email": "jses@es",
       "edad": 6,
       "creadoEn": "2022-02-16T20:54:13.445+00:00",
@@ -28,10 +28,10 @@
     },
     {
       "id": 16,
-      "nombre": "RASFSDF",
-      "apellido": "ADFADSF",
+      "nombre": "SEÑORA",
+      "apellido": "DEL SOMBRERO",
       "email": "jses@es",
-      "edad": 6,
+      "edad": 42,
       "creadoEn": "2022-02-16T20:55:58.789+00:00",
       "fotoHashCode": null
     },
@@ -43,6 +43,13 @@
       "edad": 38,
       "creadoEn": "2022-02-16T20:56:26.104+00:00",
       "fotoHashCode": null
+    },
+    {
+      "nombre": "PACO",
+      "apellido": "PIL",
+      "edad": 65,
+      "email": "laruta@correo.es",
+      "id": 18
     }
   ]
 }

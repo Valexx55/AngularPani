@@ -1,5 +1,5 @@
 <!--FORMULARIO DE PLANTILLA TEMPLATE FORM-->
-<form #formulario_alumno="ngForm" (ngSubmit)="crearAlumno()" >
+<form #formulario_alumno="ngForm" (ngSubmit)="en_edicion ? modificarAlumno() : crearAlumno()" >
     <div class="form-group">
         <label for="nombre">Nombre</label>
         <input type="text" #nombre="ngModel" [(ngModel)]="alumno.nombre" class="form-control" name="nombre" id="nombre"  placeholder="Intro nombre" required pattern=".{4,15}">
