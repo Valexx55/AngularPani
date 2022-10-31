@@ -1,6 +1,7 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CLAVE_ALUMNO_EDICION } from 'src/app/config/constantes';
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 
@@ -21,6 +22,50 @@ export class FormularioAlumnoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //AL ENTRAR, NECESITO SABER SI ESTOY EDITANDO O CREANDO
+    let url = location.href;
+    console.log("URL = " + url);
+
+    this.en_edicion = this.estoyEnEdicion(url);
+    if (this.en_edicion)
+    {
+      //venimos a editar
+      console.log("ESTAMOS EDITANDO");
+      //VOY A CARGAR EL ALUMNO QUE ESTOY EDITANDO
+      //TODO:, leer el alumno de la memoria / desrializar
+      this.alumno = this.obtenerAlumnoEnEdicion ();
+    } else {
+      //venimos a crear
+      console.log("ESTAMOS CREANDO");
+    }
+
+  }
+
+  obtenerAlumnoEnEdicion ():Alumno
+  {
+    let alumno_edicion : Alumno;
+    let alumno_json : string;
+
+       alumno_json = sessionStorage.getItem(CLAVE_ALUMNO_EDICION);
+       if (alumno_json!=null)
+       {
+        console.log("alumno en edición " + alumno_json);
+        //TEXTO A OBJETO/VARIABLE - DESERIALIZAR
+        alumno_edicion = JSON.parse(alumno_json);
+       }
+
+    return alumno_edicion;
+
+  }
+
+  //implmentando esta función
+  estoyEnEdicion (direccion:string):boolean{
+    let edicion:boolean = false;
+
+        edicion = direccion.indexOf('edit')!=-1;//si contiente edit, devolvera distinto de menos
+
+    return edicion;
   }
 
 

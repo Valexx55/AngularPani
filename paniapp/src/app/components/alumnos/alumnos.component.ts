@@ -1,5 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CLAVE_ALUMNO_EDICION } from 'src/app/config/constantes';
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 
@@ -13,7 +15,7 @@ export class AlumnosComponent implements OnInit {
 
   lista_alumnos!:Array<Alumno>;//esta es la lista visible
   
-  constructor(private servicioAlumnos:AlumnosService) { }
+  constructor(private servicioAlumnos:AlumnosService, private router:Router) { }
 
   ngOnInit(): void {
 
@@ -67,6 +69,11 @@ export class AlumnosComponent implements OnInit {
   editarAlumno(alumno_editar:Alumno)
   {
     console.log("TOCADO editarAlumno ALUMNO");
+    //PARA PODER GUARDAR EL ALUMNO HAY QUE PASARLO A TEXTO: SERIALIZAR 
+    let alumno_json:string =  JSON.stringify(alumno_editar);
+    //GUARDAR EL ALUMNO A EDITAR EN LA MEMORIA - LOCAL STORAGE
+    sessionStorage.setItem(CLAVE_ALUMNO_EDICION, alumno_json);
+    this.router.navigate(["/alumnos/form/edit", alumno_editar.id ]);
   }
 
   ordenarPorEdad()

@@ -34,8 +34,14 @@ export class AlumnosService {
 
   postAlumnoConCabeceras (alumno:Alumno) : Observable<HttpResponse<Alumno>>
   {
-    return this.clienteHttp.post<HttpResponse<Alumno>>(AlumnosService.URL_ALUMNOS, alumno, {headers:this.cabeceras,  observe: "response" as 'body'});
+    //return this.clienteHttp.post<HttpResponse<Alumno>>(AlumnosService.URL_ALUMNOS, alumno, {headers:this.cabeceras,  observe: "response" as 'body'});
+    return this.clienteHttp.post<Alumno>(AlumnosService.URL_ALUMNOS, alumno, {headers:this.cabeceras,  observe: 'response'});
   }
+
+  //versión Óscar
+  //public postAlumnoResponseCompleto(alumno : Alumno) : Observable<HttpResponse<Alumno>> {
+  //  return this.clienteHttp.post<Alumno>(AlumnosService.URL_ALUMNOS, alumno, {headers: this.cabeceras, observe: 'response'});
+  //}
 
   deleteAlumno (id:number) : Observable<any>
   {

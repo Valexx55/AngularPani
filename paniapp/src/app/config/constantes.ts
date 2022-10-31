@@ -1,0 +1,1 @@
+export const CLAVE_ALUMNO_EDICION = 'alumno_edicion';

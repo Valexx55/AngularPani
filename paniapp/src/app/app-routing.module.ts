@@ -5,7 +5,8 @@ import { FormularioAlumnoComponent } from './components/formulario-alumno/formul
 
 const routes: Routes = [
   {path:"alumnos", component: AlumnosComponent},
-  {path:"alumnos/form", component: FormularioAlumnoComponent}
+  {path:"alumnos/form", component: FormularioAlumnoComponent},//RUTA PARA CREAR
+  {path:"alumnos/form/edit/:id", component: FormularioAlumnoComponent}//RUTA PARA EDITAR
 ];
 
 @NgModule({
