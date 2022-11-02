@@ -1,0 +1,37 @@
+1) instalar ng add @angular/localize
+2) señalar los elementos/tags html que vayan a ser traducidos con i18n
+3) ejecutamos ng extract-i18n que genera el xlf
+4) para cada idioma, creo un fichero bajo src/locale con la extesión del idioma
+5) traducir todas las <trans-unit> </trans-unit> de cada fichero
+6) editar el angular .json
+
+
+"prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "es": "src/locale/messages.es.xlf"
+        }
+      },
+
+      "architect": {
+
+
+     ----    "configurations": {
+            "es":{
+              "localize": ["es"],
+              "baseHref": "/es/"
+            },
+      ----      "production": {
+
+
+          //seccion serve
+
+       ---    },
+            "es": {
+              "browserTarget": "nombreAPP:build:es"
+            }
+
+
+7 ng serve --configuation=es --> generamos la versión en el locale "es"
+  ng serve (sin nada, lo genera en en-US)

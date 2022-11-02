@@ -9,12 +9,18 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormularioAlumnoComponent } from './components/formulario-alumno/formulario-alumno.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BusquedaPorNombreComponent } from './components/busqueda-por-nombre/busqueda-por-nombre.component';
+import { CajaBusquedaAlumnosComponent } from './components/caja-busqueda-alumnos/caja-busqueda-alumnos.component';
+import { ListadoBusquedaAlumnosComponent } from './components/listado-busqueda-alumnos/listado-busqueda-alumnos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlumnosComponent,
-    FormularioAlumnoComponent
+    FormularioAlumnoComponent,
+    BusquedaPorNombreComponent,
+    CajaBusquedaAlumnosComponent,
+    ListadoBusquedaAlumnosComponent
   ],
   imports: [
     BrowserModule,
