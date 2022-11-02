@@ -2,10 +2,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { faEdit, faGhost, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { CLAVE_ALUMNO_EDICION } from 'src/app/config/constantes';
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnosService } from 'src/app/services/alumnos.service';
-//import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
+
 
 @Component({
   selector: 'app-alumnos',
@@ -15,8 +18,9 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
 export class AlumnosComponent implements OnInit {
 
 
-  //iconoborrar: IconDefinition = faTrashAlt;
- // iconoeditar: IconDefinition = faEdit;
+  iconoborrar: IconDefinition = faTrashAlt;
+  iconoeditar: IconDefinition = faEdit;
+  iconofantasma: IconDefinition = faGhost;
   lista_alumnos!:Array<Alumno>;//esta es la lista visible
   
   constructor(private servicioAlumnos:AlumnosService, private router:Router) { }

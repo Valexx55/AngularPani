@@ -13,8 +13,9 @@
                 <p>{{alumno.creadoEn |date:'short'}}</p>
                 <!-- <p>{{alumno.creadoEn}}</p> -->
             </div>
-            <button title="botonborrar" class="btn btn-danger" (click)="borrarAlumno(alumno.id)">ELIMINAR </button>
-            <button title="botoneditar" class="btn btn-success" (click)="editarAlumno(alumno)">EDITAR </button>
+            <button title="botonborrar" class="btn btn-danger" (click)="borrarAlumno(alumno.id)"><fa-icon [icon]="iconoborrar"></fa-icon> </button>
+            <button title="botoneditar" class="btn btn-success" (click)="editarAlumno(alumno)"><fa-icon [icon]="iconoeditar"></fa-icon> </button>
+            <button title="botoneditar" class="btn btn-primary" (click)="editarAlumno(alumno)"><fa-icon [icon]="iconofantasma"></fa-icon> </button>
         </div>
     </div>
     <button title="botonborrar" class="btn btn-primary" (click)="ordenarPorEdad()">ORDENAR </button>
