@@ -1,8 +1,10 @@
 <button title="crearAlumno" class="btn btn-primary" routerLink="/alumnos/form">CREAR</button>
 <div class="listaAlumnos">
     <div *ngFor="let alumno of lista_alumnos" class="card" style="width: 18rem;">
-        <img *ngIf="alumno.id%2==0" class="card-img-top" alt="Foto Alumno" src="https://randomuser.me/api/portraits/women/{{alumno.id}}.jpg">
-        <img *ngIf="alumno.id%2!=0" class="card-img-top" alt="Foto Alumno" src="https://randomuser.me/api/portraits/men/{{alumno.id}}.jpg">
+        <img *ngIf="alumno.id%2==0" class="card-img-top" alt="Foto Alumno"
+            src="https://randomuser.me/api/portraits/women/{{alumno.id}}.jpg">
+        <img *ngIf="alumno.id%2!=0" class="card-img-top" alt="Foto Alumno"
+            src="https://randomuser.me/api/portraits/men/{{alumno.id}}.jpg">
         <div class="card-body">
             <h5 class="card-title"> {{alumno.id}} {{alumno.nombre}} {{alumno.apellido}}</h5>
             <ul class="list-group list-group-flush">
@@ -13,10 +15,23 @@
                 <p>{{alumno.creadoEn |date:'short'}}</p>
                 <!-- <p>{{alumno.creadoEn}}</p> -->
             </div>
-            <button title="botonborrar" class="btn btn-danger" (click)="borrarAlumno(alumno.id)"><fa-icon [icon]="iconoborrar"></fa-icon> </button>
-            <button title="botoneditar" class="btn btn-success" (click)="editarAlumno(alumno)"><fa-icon [icon]="iconoeditar"></fa-icon> </button>
-            <button title="botoneditar" class="btn btn-primary" (click)="editarAlumno(alumno)"><fa-icon [icon]="iconofantasma"></fa-icon> </button>
+            <button title="botonborrar" class="btn btn-danger" (click)="borrarAlumno(alumno.id)">
+                <fa-icon [icon]="iconoborrar"></fa-icon>
+            </button>
+            <button title="botoneditar" class="btn btn-success" (click)="editarAlumno(alumno)">
+                <fa-icon [icon]="iconoeditar"></fa-icon>
+            </button>
+            <!--<button title="botoneditar" class="btn btn-primary" (click)="editarAlumno(alumno)"><fa-icon [icon]="iconofantasma"></fa-icon> </button>-->
         </div>
     </div>
-    <button title="botonborrar" class="btn btn-primary" (click)="ordenarPorEdad()">ORDENAR </button>
+    <div>
+        <button title="botonordenar" class="btn btn-primary" (click)="ordenarPorEdad()">ORDENAR </button>
+    </div>
+    <br><br>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [checked]="automatico" (click)="checkTocado()">
+        <label class="form-check-label" for="flexCheckChecked">
+            Actualizar automáticamente
+        </label>
+    </div>
 </div>

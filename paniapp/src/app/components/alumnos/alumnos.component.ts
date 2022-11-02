@@ -1,9 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faEdit, faGhost, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { Observer } from 'rxjs';
 import { CLAVE_ALUMNO_EDICION } from 'src/app/config/constantes';
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnosService } from 'src/app/services/alumnos.service';
@@ -15,19 +16,58 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
   templateUrl: './alumnos.component.html',
   styleUrls: ['./alumnos.component.css']
 })
-export class AlumnosComponent implements OnInit {
+export class AlumnosComponent implements OnInit, OnDestroy {
 
 
   iconoborrar: IconDefinition = faTrashAlt;
   iconoeditar: IconDefinition = faEdit;
   iconofantasma: IconDefinition = faGhost;
   lista_alumnos!:Array<Alumno>;//esta es la lista visible
-  
-  constructor(private servicioAlumnos:AlumnosService, private router:Router) { }
+  idInterval:any;
+
+  automatico:boolean;
+
+  observador:Observer<Array<Alumno>> = {
+    next:(datos) => {
+      //objeto.alumnos = datos;
+      console.log("actualizando...");
+      this.lista_alumnos = <Array<Alumno>> datos;
+      //this.lista_alumnos = datos as Array<Alumno>; //Alumno[];
+      console.log(this.lista_alumnos);
+    },
+    error:(error: HttpErrorResponse) => {
+      console.error("Error" + error.name);
+      console.error("Error" + error.message);
+      console.error("Error" + error.error);
+      console.error("Error" + error.ok);
+    },
+    complete: () => {
+      console.log("Complete");
+    }
+  };
+
+  constructor(private servicioAlumnos:AlumnosService, private router:Router) { 
+    this.automatico =false;
+  }
+  ngOnDestroy(): void {
+    //este método es invocado cuando se destruye el compoennte
+    //cuando deja de ser visible para el usuario porque transito a otro generalmente
+   console.log("ngOnDestroy()");
+   //si hay una tarea programada de actualizar automáticamente, la desprogramar
+    if (this.idInterval)
+    {
+      this.desProgramarActualizacionAutomatica();
+    }
+
+   // console.log("observador cerrado " +this.observador.closed);
+   
+
+
+  }
 
   ngOnInit(): void {
 
-    //TODO: MOSTRAR LOS ALUMNOS EN LA PLANTILLA 
+    
     //let objeto = this;  
     this.servicioAlumnos.findAll().subscribe({
       next:(datos) => {
@@ -47,6 +87,41 @@ export class AlumnosComponent implements OnInit {
       }
     });
 
+    
+  }
+
+  actualizarFuncionConNombre ()
+  {
+    this.servicioAlumnos.findAll().subscribe(this.observador);
+  }
+
+  programarActualizacionAutomatica ()
+  {
+    this.idInterval = setInterval( () => {
+      this.servicioAlumnos.findAll().subscribe(this.observador);
+    }, 3000);
+  }
+
+  desProgramarActualizacionAutomatica ()
+  {
+    //TODO: programar este método hacer que pare de actualizarse
+    console.log("desprogramo la actualización...");
+    clearInterval(this.idInterval);
+  }
+
+  checkTocado()
+  {
+  
+    this.automatico = !this.automatico;
+    console.log("check tocado " + this.automatico);
+    if (this.automatico)
+    {
+      this.programarActualizacionAutomatica ();
+      //setInterval(this.actualizarFuncionConNombre, 3000);
+    } else 
+    {
+      this.desProgramarActualizacionAutomatica ();
+    }
     
   }
 
