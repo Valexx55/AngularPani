@@ -8,7 +8,7 @@ import { ComunicadorService } from 'src/app/services/comunicador.service';
 })
 export class CajaBusquedaAlumnosComponent implements OnInit, AfterViewInit {
 
-
+//! non - null operator
   @ViewChild('cajabusqueda') caja_input:ElementRef;//ElementRef: envolotorio para las etiquetas HTML Estándar
   termino_busqueda:string;
 
@@ -40,6 +40,7 @@ export class CajaBusquedaAlumnosComponent implements OnInit, AfterViewInit {
     let caja_busqueda : HTMLInputElement = <HTMLInputElement>this.caja_input.nativeElement;
     this.termino_busqueda = caja_busqueda.value;
     console.log("A buscar ...");
+    this.comService.comunicarNuevaBusqueda(this.termino_busqueda);
     
   }
 

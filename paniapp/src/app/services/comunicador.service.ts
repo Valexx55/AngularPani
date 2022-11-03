@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 /**
  * ESTE SERVICIO  VA A SER UNA TUBERÍa QUE COMUNIQUE
@@ -12,12 +12,15 @@ import { Subject } from 'rxjs';
 export class ComunicadorService {
 
   private tuberiaPalabraBuscada:Subject<string>;
+  public palabraNuevaAnunciada:Observable<String>;//"PUERTA DE SALIDA - A ESTE OBJETO DEBO SUSCRIBIRME"
 
   constructor() { 
 
     this.tuberiaPalabraBuscada = new Subject<string>();
-   
+    this.palabraNuevaAnunciada = this.tuberiaPalabraBuscada.asObservable();
   }
+
+
 
   comunicarNuevaBusqueda (termino:string)
   {

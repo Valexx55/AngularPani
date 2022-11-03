@@ -26,7 +26,7 @@ export class AlumnosService {
     return this.alumnoEdicion;
   }
 
-  //static readonly URL_ALUMNOS:string = "https://my-json-server.typicode.com/valexx55/alumnostardes/alumno";
+  static readonly URL_ALUMNOS_GITHUB:string = "https://my-json-server.typicode.com/valexx55/alumnostardes/alumno";
 
   static readonly URL_ALUMNOS:string = "http://localhost:3000/alumnos";
 
@@ -35,6 +35,16 @@ export class AlumnosService {
   //findAll() : Observable<Array<Alumno>> {
   findAll() : Observable<any> {
     return this.clienteHttp.get<Array<Alumno>>(AlumnosService.URL_ALUMNOS);
+  }
+
+  findAllGitHub() : Observable<any> {
+    return this.clienteHttp.get<Array<Alumno>>(AlumnosService.URL_ALUMNOS_GITHUB);
+  }
+
+  //GET /comments?author.name=typicode
+
+  findByNombre(termino:string) : Observable<any> {
+    return this.clienteHttp.get<Array<Alumno>>(AlumnosService.URL_ALUMNOS+"?nombre="+termino);
   }
 
   findAllConCabeceras() : Observable<any> {

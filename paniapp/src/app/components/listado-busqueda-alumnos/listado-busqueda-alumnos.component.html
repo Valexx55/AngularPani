@@ -1,1 +1,5 @@
-<p>listado-busqueda-alumnos works!</p>
+<ul class="list-group">
+    <li class="list-group-item active">Lista de alumnos</li>
+    <!-- {{lista_alumnos | json}} -->
+</ul>
+<a (click)="alumnoTocado(verAlumno)" class="list-group-item list-group-item-action" *ngFor="let verAlumno of lista_alumnos">{{verAlumno.nombre}}, {{verAlumno.apellido}}</a>

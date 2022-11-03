@@ -1,5 +1,12 @@
 <div class="container my-4">BÚSQUEDA DE ALUMNOS POR NOMBRE</div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked]="repogithub" (click)="checkTocado()">
+    <label class="form-check-label" for="flexCheckDefault">
+      Usar repo de GitHub
+    </label>
+  </div>
+
 <app-caja-busqueda-alumnos></app-caja-busqueda-alumnos>
-<app-listado-busqueda-alumnos></app-listado-busqueda-alumnos>
+<app-listado-busqueda-alumnos [tiroDeGitHub]="repogithub"></app-listado-busqueda-alumnos>
 
 
