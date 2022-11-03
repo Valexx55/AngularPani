@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ComunicadorService } from 'src/app/services/comunicador.service';
 
 @Component({
   selector: 'app-listado-busqueda-alumnos',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoBusquedaAlumnosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private comService:ComunicadorService) { }
 
   ngOnInit(): void {
   }
