@@ -1,9 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription, SubscriptionLike } from 'rxjs';
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { ComunicadorService } from 'src/app/services/comunicador.service';
+import { ModalAlumnoComponent } from '../modal-alumno/modal-alumno.component';
 
 @Component({
   selector: 'app-listado-busqueda-alumnos',
@@ -17,7 +20,7 @@ export class ListadoBusquedaAlumnosComponent implements OnInit, OnDestroy {
 
   @Input() tiroDeGitHub:boolean;
 
-  constructor(private comService:ComunicadorService, private alumnoService: AlumnosService) { 
+  constructor(private comService:ComunicadorService, private alumnoService: AlumnosService, public dialog: MatDialog) { 
 
     this.lista_alumnos = new Array<Alumno>();
     this.subscriptor = this.comService.palabraNuevaAnunciada.subscribe(
@@ -57,6 +60,8 @@ export class ListadoBusquedaAlumnosComponent implements OnInit, OnDestroy {
   alumnoTocado(alumno:Alumno)
   {
     console.log("alumnoTocado");
+    //TODO es ABRIR EL DIALOGO VENTANA EMERGENTE CON LOS DATOS DEL ALUMNO
+    this.dialog.open(ModalAlumnoComponent, {data:alumno})
   }
 
   busquedaAlumnosEnGitHUB (termino:string)

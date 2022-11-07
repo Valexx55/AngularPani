@@ -12,6 +12,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BusquedaPorNombreComponent } from './components/busqueda-por-nombre/busqueda-por-nombre.component';
 import { CajaBusquedaAlumnosComponent } from './components/caja-busqueda-alumnos/caja-busqueda-alumnos.component';
 import { ListadoBusquedaAlumnosComponent } from './components/listado-busqueda-alumnos/listado-busqueda-alumnos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ModalAlumnoComponent } from './components/modal-alumno/modal-alumno.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { ListadoBusquedaAlumnosComponent } from './components/listado-busqueda-a
     FormularioAlumnoComponent,
     BusquedaPorNombreComponent,
     CajaBusquedaAlumnosComponent,
-    ListadoBusquedaAlumnosComponent
+    ListadoBusquedaAlumnosComponent,
+    ModalAlumnoComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,8 @@ import { ListadoBusquedaAlumnosComponent } from './components/listado-busqueda-a
     LayoutModule, //cargo el módulo personalizado, para que pueda usarse todo lo que lleva en el
     HttpClientModule,
     FormsModule,//necesario para poder trabjar con Formularios Plantilla!
-    FontAwesomeModule//FUENTES ICONOGRÁFICOS
+    FontAwesomeModule, BrowserAnimationsModule,//FUENTES ICONOGRÁFICOS
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
