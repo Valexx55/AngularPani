@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { MarcadorComponent } from '../marcador/marcador.component';
 
 @Component({
   selector: 'app-juego-ppt',
@@ -8,6 +9,14 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 export class JuegoPptComponent implements OnInit, AfterViewInit {
 
 
+  //gracias a esto, ya puedo modificar el componente hijo
+  @ViewChild(MarcadorComponent) marcador_componente: MarcadorComponent;
+  //acceder por el nombre de la plantila #
+  //@ViewChild('marcador') marcador_componente: MarcadorComponent;
+
+  //para tener una colección de hijos del mismo tipo
+  //@ViewChildren(MarcadorComponent) marcadores?:QueryList<MarcadorComponent>;
+  
   nombrejugadorjuego: string;
   seleccionado: boolean = false;
   ids_botones: Array<string> = ["piedra", "papel", "tijera"];
@@ -20,11 +29,14 @@ export class JuegoPptComponent implements OnInit, AfterViewInit {
   ];
 
   constructor() { }
-  ngAfterViewInit(): void {
-    
-  }
+  
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    //this.marcador_componente.nombrejugadormarcador="PEPE";
+    // console.log("hay " + this.marcadores.length + "marcadores");
   }
 
   selectPlay(play: number) {
@@ -79,15 +91,13 @@ export class JuegoPptComponent implements OnInit, AfterViewInit {
       console.log(result);
       this.mostrarResultado(result);
 
-      localStorage.removeItem("selected");
+      //localStorage.removeItem("selected");
     }
   }
 
   mostrarResultado(resultado: number): void {
     console.log("mostrando resultado " +resultado);
-    //-1 gana la máquina
-    //1 gana el jugador
-    //0 empate
+    this.marcador_componente.actualizarMarcador(resultado);
   }
 
 }

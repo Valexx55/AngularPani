@@ -1,1 +1,20 @@
-<p>marcador works!</p>
+<table class="table text-center mt-3">
+    <thead class="thead-light">
+      <tr>
+        <!-- <th scope="col">#</th> -->
+        <th scope="col">{{(nombrejugadormarcador!='') ? nombrejugadormarcador : 'JUGADOR'}}</th>
+        <th scope="col">PC</th>  
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <!-- <th scope="row">1</th> -->
+        <td>{{marcador_actual.puntuacion_jugador}}</td>
+        <td>{{marcador_actual.puntuacion_maquina}}</td>
+      </tr>
+    </tbody>
+    <!-- <div class="btn-group" role="group" aria-label="Basic example">
+      <button (click)="guardarMarcador()" type="button" class="btn btn-primary">Guardar</button>
+      <button (click)="borrarMarcador()" type="button" class="btn btn-primary">Borrar</button>
+    </div> -->
+  </table>
