@@ -1,0 +1,69 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+h1 {
+    text-align: center;
+}
+
+.botones,
+.contenedor {
+    display: flex;
+    width: 1000px;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.botones-p {
+    display: flex;
+    width: 1000px;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.boton {
+    width: 300px;
+    transition: transform 1.5s;
+}
+
+.boton-p {
+    width: 200px;
+}
+
+.boton:hover {
+    transform: scale(1.2);
+}
+
+.boton img {
+    width: 100%;
+}
+
+.boton-p img {
+    width: 100%;
+}
+
+.marcada {
+    border: 2px solid blueviolet;
+}
+
+.button-play {
+    margin: 0 auto;
+    width: 12rem;
+    height: 6rem;
+    font-size: 24px;
+    background-color: green;
+    color: whitesmoke;
+    border: 2px solid green;
+    border-radius: 6px;
+}
+
+.contenedor {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}

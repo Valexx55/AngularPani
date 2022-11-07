@@ -1,0 +1,29 @@
+<div>
+    <div>
+        <h1>Juega y Gana!!!</h1>
+    </div>
+    <div class="form-group">
+        <label for="nombre">Nombre Jugador</label>
+        <input type="text" name="nombre" [(ngModel)]="nombrejugadorjuego" class="form-control" id="nombre" placeholder="Intro nombre del jugador">
+    </div>
+    <br><br>
+    <div id="botonera" class="botones">
+        <div id="piedra" class="boton" (click)="selectPlay(0)">
+            <img src="assets/imagenes/rock.png" alt="Piedra">
+        </div>
+        <div id="papel" class="boton" (click)="selectPlay(1)">
+            <img src="assets/imagenes/paper.png" alt="Piedra">
+        </div>
+        <div id="tijera" class="boton" (click)="selectPlay(2)">
+            <img src="assets/imagenes/scissors.png" alt="Piedra">
+        </div>
+    </div>
+    <div class="contenedor">
+        <button class="button-play" (click)="playNow()" [hidden]="!seleccionado">Jugar</button>
+    </div>
+    <div id="botonera-p" class="botones-p">
+        <div class="boton-p">
+            <img id="computerPlay">
+        </div>
+    </div>
+</div>
