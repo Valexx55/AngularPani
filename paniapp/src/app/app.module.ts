@@ -19,6 +19,8 @@ import { JuegoPptComponent } from './components/juego-ppt/juego-ppt.component';
 import { MarcadorComponent } from './components/marcador/marcador.component'
 import { MiInterceptorInterceptor } from './services/mi-interceptor.interceptor';
 import { MiInterceptor2Interceptor } from './services/mi-interceptor2.interceptor';
+import { MapaComponent } from './components/mapa/mapa.component';
+import { OcioComponent } from './components/ocio/ocio.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { MiInterceptor2Interceptor } from './services/mi-interceptor2.intercepto
     ListadoBusquedaAlumnosComponent,
     ModalAlumnoComponent,
     JuegoPptComponent,
-    MarcadorComponent
+    MarcadorComponent,
+    MapaComponent,
+    OcioComponent
   ],
   imports: [
     BrowserModule,
@@ -43,8 +47,8 @@ import { MiInterceptor2Interceptor } from './services/mi-interceptor2.intercepto
   ],
   providers: [
     //el orden de declaración determina el orden de ejecución de los interceptores
-    { provide: HTTP_INTERCEPTORS , useClass: MiInterceptor2Interceptor, multi: true},
-    { provide: HTTP_INTERCEPTORS , useClass: MiInterceptorInterceptor, multi: true}
+   // { provide: HTTP_INTERCEPTORS , useClass: MiInterceptor2Interceptor, multi: true},
+    //{ provide: HTTP_INTERCEPTORS , useClass: MiInterceptorInterceptor, multi: true}
    
   ],
   bootstrap: [AppComponent]

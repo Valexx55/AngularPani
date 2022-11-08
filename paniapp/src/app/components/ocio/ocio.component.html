@@ -1,0 +1,27 @@
+<p>ocio works!</p>
+<select title="listadistritos" (change)="distritoSeleccionado($event)">
+    <option *ngFor="let distrito of distritos"
+    value="{{distrito}}">{{distrito}}</option>
+</select>
+
+<div *ngIf="array_eventos&&array_eventos.length>0">
+    <p>Hay {{numero_eventos}} eventos en el Distrinto</p>
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">NUM</th>
+            <th scope="col">TITULO</th>
+            <th scope="col"></th><!--para botones-->
+            <th scope="col"></th>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let evento of array_eventos">
+                 <td>{{evento.id}}</td>   
+                 <td>{{evento.titulo}}</td>
+                 <td><button class="btn btn-success">VER EN EL MAPA</button></td>   
+                 <td><button class="btn btn-primary">VER DETALLE</button></td>      
+            </tr>
+        </tbody>
+    </table>
+
+</div>
