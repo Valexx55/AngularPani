@@ -48,12 +48,12 @@ export class AlumnosService {
   }
 
   findAllConCabeceras() : Observable<any> {
-    return this.clienteHttp.get<Array<Alumno>>(AlumnosService.URL_ALUMNOS, { observe: 'response' });
+    return this.clienteHttp.get<Array<Alumno>>(AlumnosService.URL_ALUMNOS_GITHUB, { observe: 'response' });
   }
 
   postAlumno (alumno:Alumno) : Observable<Alumno>
   {
-    return this.clienteHttp.post<Alumno>(AlumnosService.URL_ALUMNOS, alumno, {headers:this.cabeceras});
+    return this.clienteHttp.post<Alumno>(AlumnosService.URL_ALUMNOS_GITHUB, alumno, {headers:this.cabeceras});
   }
 
 

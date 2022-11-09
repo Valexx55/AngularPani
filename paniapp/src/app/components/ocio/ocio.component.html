@@ -3,7 +3,7 @@
     <option *ngFor="let distrito of distritos"
     value="{{distrito}}">{{distrito}}</option>
 </select>
-
+<app-mapa></app-mapa>
 <div *ngIf="array_eventos&&array_eventos.length>0">
     <p>Hay {{numero_eventos}} eventos en el Distrinto</p>
     <table class="table table-striped">
@@ -18,8 +18,8 @@
             <tr *ngFor="let evento of array_eventos">
                  <td>{{evento.id}}</td>   
                  <td>{{evento.titulo}}</td>
-                 <td><button class="btn btn-success">VER EN EL MAPA</button></td>   
-                 <td><button class="btn btn-primary">VER DETALLE</button></td>      
+                 <td><button class="btn btn-success" (click)="verEnElMapa(evento.id)">VER EN EL MAPA</button></td>   
+                 <td><button class="btn btn-primary" (click)="verEnDetalle(evento)">VER DETALLE</button></td>      
             </tr>
         </tbody>
     </table>

@@ -65,4 +65,15 @@ export class OcioComponent implements OnInit {
     
   }
 
+  verEnElMapa(id_evento:number)
+  {
+    //TODO: comunicar con el compoennte Mapa la posición
+  }
+
+  verEnDetalle(evento:Evento)
+  {
+
+    //TODO: comunicar con el Api llamando al get de la URl del evento
+  }
+
 }

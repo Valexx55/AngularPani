@@ -24,6 +24,7 @@ export class AlumnosComponent implements OnInit, OnDestroy {
   iconofantasma: IconDefinition = faGhost;
   lista_alumnos!:Array<Alumno>;//esta es la lista visible
   idInterval:any;
+  titulo:string="HOla";
 
   automatico:boolean;
 
@@ -194,4 +195,8 @@ export class AlumnosComponent implements OnInit, OnDestroy {
     );
   }
 
+  helloWorld()
+ {
+    return "HOla mundo"
+  }
 }
